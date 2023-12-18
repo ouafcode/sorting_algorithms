@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "sort.h"
+
 /**
  * bubble_sort -  sorts an array of integers  in ascending order
  * @array: input array
  * @size: size of array
  *
- * Return: print array after each swap
  */
 
 void bubble_sort(int *array, size_t size)
@@ -14,11 +14,11 @@ void bubble_sort(int *array, size_t size)
 	size_t i, j;
 	int flag = 0;
 
-
 	if (size < 2)
 	{
 		return;
 	}
+
 	for (i = 0; i < size - 1; i++)
 	{
 		for (j = 0; j < size - 1 - i; j++)
