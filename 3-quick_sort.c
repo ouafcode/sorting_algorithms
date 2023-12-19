@@ -3,6 +3,22 @@
 
 
 /**
+ * position - to change position of numbers
+ * @array: input array
+ * @nbr1: first number
+ * @nbr2: second number
+ * @size: input size
+ */
+void position(int *array, int *nbr1, int *nbr2, size_t size)
+{
+	int pst = *nbr1;
+
+	*nbr1 = *nbr2;
+	*nbr2 = pst;
+	print_array(array, size);
+}
+
+/**
  * Partition - partition of array
  * @array: input array
  * @lb: array start
@@ -13,37 +29,25 @@
 
 int Partition(int *array, int lb, int ub, size_t size)
 {
-	int pivot, start, end, temp;
 
-	pivot = array[lb];
-	start = lb;
-	end = ub;
+	int pivot = array[ub];
+	int index  = lb;
+	int i = 0;
 
-	while (start < end)
+	for (i = lb; i < ub; i++)
 	{
-		while (array[start] <= pivot)
+		if (array[i] <= pivot)
 		{
-			start++;
-		}
-		while (array[end] > pivot)
-		{
-			end--;
-		}
-		if (start < end)
-		{
-			temp = array[start];
-			array[start] = array[end];
-			array[end] = temp;
-			print_array(array, size);
+			if (index != i)
+				position(array, &array[i], &array[index], size);
+			index++;
 		}
 	}
-	temp = array[lb];
-	array[lb] = array[end];
-	array[end] = temp;
-	print_array(array, size);
-	return (end);
-}
+	if (index != ub)
+		position(array, &array[ub], &array[index], size);
+	return (index);
 
+}
 
 /**
  * Quick - sort array of integers in ascending order
