@@ -57,7 +57,7 @@ void Quick(int *array, int lb, int ub, size_t size)
 {
 	if (lb < ub)
 	{
-		int loc;
+		int loc = 0;
 
 		loc = Partition(array, lb, ub, size);
 		Quick(array, lb, loc - 1, size);
